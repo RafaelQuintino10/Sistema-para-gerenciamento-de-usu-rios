@@ -4,29 +4,31 @@ import os
 from tkinter import messagebox as pop_up
 
 # Define o caminho do arquivo CSV
+# Estes arquivos servião como banco de dados
 arquivo_dados_usuarios = 'usuarios.csv'
 arquivo_dados_alimentos = 'alimentos.csv'
 
-
+# Função para cadastrar os usuários
 def cadastrar_usuario():
     """Solicita informações do usuário e as salva no arquivo CSV."""
     nome = usuario.get()
     id = idade.get()
+    # Colocando um pop up para caso o usuário clique em "cadastar" sem digitar os dados
     if not nome or not id:
         pop_up.showerror('ERRO!', "DIGITE O NOME E A IDADE CORRETAMENTE!")
         return
-    dados = carregar_dados_usuario()
-    dados.append({'Nome': nome, 'Idade': id})
-    salvar_dados_usuario(dados)
-    pop_up.showinfo('SUCESSO', "USUÁRIO CADASTRADO COM SUCESSO!")
+    dados = carregar_dados_usuario() # Carrega os dados da função  "carregar_dados_usuario
+    dados.append({'Nome': nome, 'Idade': id}) # Adiciona os campos de input ao banco de dados
+    salvar_dados_usuario(dados) # Chama a função para salvar os dados, passando o parâmetro "dados"
+    pop_up.showinfo('SUCESSO', "USUÁRIO CADASTRADO COM SUCESSO!") # Adiciona um pop up de confirmação de cadastro
     usuario.delete(0, 'end')  # Limpa o campo de entrada
     idade.delete(0, 'end')    # Limpa o campo de entrada
     atualizar_lista_usuarios()  # Atualiza a lista após cadastrar
 
-
+# Função para salvar os dados do usuário
 def salvar_dados_usuario(dados):
     """Salva os dados no arquivo CSV."""
-    with open(arquivo_dados_usuarios, mode='w', newline='', encoding='utf-8') as arquivo:
+    with open(arquivo_dados_usuarios, mode='w', newline='', encoding='utf-8') as arquivo: # Abre o arquivo csv e insere os dados nele
         campo_nomes = ['Nome', 'Idade']
         escritor = csv.DictWriter(arquivo, fieldnames=campo_nomes)
         escritor.writeheader()
@@ -72,14 +74,14 @@ def carregar_dados_alimentos():
             leitor = csv.DictReader(arquivo)
             return list(leitor)
     return []
-
+# Faz a somatória da quantidade total de alimentos
 def calcular_quantidade_total_alimentos():
     dados = carregar_dados_alimentos()
     quantidade_total= 0
     for item in dados:
         quantidade_total += float(item['Quantidade'])
     return quantidade_total
-
+# Divide a quantidade total de alimentos pelo número de usuários
 def divisao_alimentos_por_usuarios():
     try:
         quantidade_total = calcular_quantidade_total_alimentos()
@@ -95,6 +97,7 @@ def divisao_alimentos_por_usuarios():
         pop_up.showerror('ERRO!', 'OCORREU UM ERRO AO REALIZAR A DIVISÃO DE ALIMENTOS! TENTE NOVAMENTE!')
     
 def mostrar_tela_principal():
+    # Esconde as outras telas enquanto estiver na tela principal
     tela_cadastro_usuario.grid_forget()
     tela_listagem_usuarios.grid_forget()
     tela_cadastro_alimentos.grid_forget()
@@ -103,23 +106,27 @@ def mostrar_tela_principal():
     tela_principal.grid(row=0, column=0, sticky='nsew')
 
 def mostrar_tela_cadastro_usuarios():
+    # Esconde as outras telas enquanto estiver na tela de cadastro de usuários
     tela_principal.grid_forget()
     tela_listagem_usuarios.grid_forget()
     tela_cadastro_usuario.grid(row=0, column=0, sticky="nsew")
 
 def mostrar_listagem_usuarios():
+    # Esconde as outras telas enquanto estiver na tela de listagem de usuários
     tela_principal.grid_forget()
     tela_cadastro_usuario.grid_forget()
     tela_listagem_usuarios.grid(row=0, column=0, sticky='nsew')
     atualizar_lista_usuarios()
 
 def mostrar_tela_cadastro_alimentos():
+    # Esconde as outras telas enquanto estiver na tela principal de cadastro de alimentos
     tela_principal.grid_forget()
     tela_cadastro_usuario.grid_forget()
     tela_listagem_usuarios.grid_forget()
     tela_cadastro_alimentos.grid(row=0, column=0, sticky='nsew')
 
 def mostrar_listagem_alimentos():
+    # Esconde as outras telas enquanto estiver na tela de listagem de alimentos
     tela_principal.grid_forget()
     tela_cadastro_usuario.grid_forget()
     tela_cadastro_alimentos.grid_forget()
@@ -128,6 +135,7 @@ def mostrar_listagem_alimentos():
     atualizar_lista_alimentos()
 
 def mostrar_tela_calculo():
+    # Esconde as outras telas enquanto estiver na tela de cálculo 
     tela_principal.grid_forget()
     tela_cadastro_usuario.grid_forget()
     tela_cadastro_alimentos.grid_forget()
@@ -193,6 +201,7 @@ def criar_tabela_alimentos(frame, dados):
 
 
 def atualizar_lista_alimentos():
+    # Atualiza a tabela de alimentos
     dados = carregar_dados_alimentos()
     criar_tabela_alimentos(scrollable_frame_alimentos,dados)
 
