@@ -12,6 +12,7 @@ Funcionalidades
 5 - Cálculo de Divisão de Alimentos: Calcula e exibe a quantidade de alimentos que cada usuário deve receber, com base na quantidade total de alimentos cadastrados e no número de usuários.
 
 
+
 Dependências
 
 Python 3.x
@@ -47,11 +48,15 @@ Como Usar
    Calcular Divisão: Calcula e exibe a divisão dos alimentos entre os usuários.
 
 
+![interface_usuarios](https://github.com/user-attachments/assets/0cafad4d-a944-4e8b-91f2-3e66cd3b56c2)
+
 
 3 - Cadastro de Usuários:
 
    Insira o nome e a idade do usuário;
    Clique em "Cadastrar usuário" para salvar as informações.
+
+   ![telacadastro](https://github.com/user-attachments/assets/c3c62789-ffb2-46ec-9ea8-2baee3e3bf3f)
 
    
    
@@ -60,16 +65,28 @@ Como Usar
    Insira o nome do alimento e a quantidade.
    Clique em "Cadastrar alimento" para salvar as informações.
 
+   ![cadastro-alimentos](https://github.com/user-attachments/assets/f9bc7698-19e8-49f3-944e-39a11cc27e2a)
 
+   
    
 5 - Listagem de Usuários e Alimentos:
 
    Acesse as respectivas telas para visualizar os dados cadastrados em formato de tabela.
+
+
+   ![lista-usuarios](https://github.com/user-attachments/assets/c098d312-5c0d-41f0-9c17-99e6090e01fe)
+   ![lista-alimentos](https://github.com/user-attachments/assets/6bf5f73a-f417-4d69-9c5f-3e4ac9d576ef)
+
+   
    
 6 - Cálculo de Divisão de Alimentos:
 
    Clique em "Calcular divisão" para calcular a quantidade de alimentos que cada usuário deve receber.
 
+
+   ![divisao](https://github.com/user-attachments/assets/458f54bd-b222-4033-b32f-969cd9bd8042)
+
+    
    
 Exemplo de Arquivo CSV
 usuarios.csv
