@@ -30,9 +30,9 @@ alimentos.csv: Armazena os dados dos alimentos com as colunas Alimento e Quantid
 Como Usar
 
 1 - Executar o Programa: Execute o arquivo Python para iniciar o aplicativo.
-bash
-Copiar código:
-python nome_do_arquivo.py
+
+	prototipo.py
+
 
 2 - Tela Principal: A tela principal oferece botões para acessar as diferentes funcionalidades do sistema:
 
